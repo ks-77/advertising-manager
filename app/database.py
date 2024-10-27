@@ -22,10 +22,3 @@ async_session_maker = async_sessionmaker(engine, expire_on_commit=False)
 
 class Base(DeclarativeBase):
     pass
-
-
-print("DB_USER:", DB_USER)
-print("DB_PASS:", DB_PASS)
-print("DB_HOST:", DB_HOST)
-print("DB_PORT:", DB_PORT)
-print("DB_NAME:", DB_NAME)
