@@ -11,10 +11,8 @@ class Category(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False, unique=True)
 
-    # Relationship to Pricing
     pricing = relationship('Pricing', back_populates='category', cascade='all, delete-orphan')
 
-    # Relationship to Advertisement
     advertisements = relationship('Advertisement', back_populates='category', cascade='all, delete-orphan')
 
     def __repr__(self):
@@ -29,8 +27,8 @@ class Pricing(Base):
     days_to = Column(Integer, nullable=False)
     daily_rate = Column(Integer, nullable=False)
 
-    category_id = Column(Integer, ForeignKey('category.id'))  # Correct usage of ForeignKey
-    category = relationship('Category', back_populates='pricing')  # Use string 'Category'
+    category_id = Column(Integer, ForeignKey('category.id'))
+    category = relationship('Category', back_populates='pricing')
 
     def __repr__(self):
         return (
@@ -50,8 +48,8 @@ class Advertisement(Base):
     date_to = Column(Date, nullable=False)
     media_file = Column(String)
 
-    category_id = Column(Integer, ForeignKey('category.id'))  # Correct usage of ForeignKey
-    category = relationship('Category', back_populates='advertisements')  # Correct back_populates
+    category_id = Column(Integer, ForeignKey('category.id'))
+    category = relationship('Category', back_populates='advertisements')
 
     @property
     def days_count(self):

@@ -10,3 +10,16 @@ class SAdvertisement(BaseModel):
     date_to: date
     media_file: str
     category_id: int
+
+
+class SCategory(BaseModel):
+    id: int
+    name: str
+
+
+class SPricing(BaseModel):
+    id: int
+    days_from: int
+    days_to: int
+    daily_rate: int
+    category_id: int

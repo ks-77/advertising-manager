@@ -1,13 +1,13 @@
-from datetime import date
+from fastapi import FastAPI
 
-from fastapi import FastAPI, UploadFile, File, HTTPException, Depends
-from pydantic import BaseModel
-
-from app.advertisements.router import router as router_advertisements
+from app.advertisements.router import add_router as router_advertisements, category_router as category_router, pricing_router as pricing_router
 app = FastAPI()
 
 
 app.include_router(router_advertisements)
+app.include_router(category_router)
+app.include_router(pricing_router)
+
 
 # class SAdvertisement(BaseModel):
 #     description: str
