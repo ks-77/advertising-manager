@@ -1,5 +1,6 @@
 from datetime import date
 
+from fastapi import File, UploadFile
 from pydantic import BaseModel
 
 
@@ -19,6 +20,17 @@ class SCategory(BaseModel):
 
 class SPricing(BaseModel):
     id: int
+    days_from: int
+    days_to: int
+    daily_rate: int
+    category_id: int
+
+
+class SCategoryCreate(BaseModel):
+    name: str
+
+
+class SPricingCreate(BaseModel):
     days_from: int
     days_to: int
     daily_rate: int
