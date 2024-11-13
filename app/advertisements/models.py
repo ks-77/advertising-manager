@@ -46,7 +46,9 @@ class Advertisement(Base):
     description = Column(String, nullable=False)
     date_from = Column(Date, nullable=False)
     date_to = Column(Date, nullable=False)
-    media_file = Column(String)
+    media_file = Column(String, nullable=False)
+    owner_username = Column(String, nullable=False)
+    service = Column(String, nullable=False)
 
     category_id = Column(Integer, ForeignKey('category.id'))
     category = relationship('Category', back_populates='advertisements')

@@ -29,7 +29,9 @@ async def add_advertisement(
     date_from: date = Form(...),
     date_to: date = Form(...),
     category_id: int = Form(...),
-    media_file: UploadFile = File(...)
+    media_file: UploadFile = File(...),
+    owner_username: str = Form(...),
+    service: str = Form(...),
 ):
     media_file_bytes = await media_file.read()
     media_file_coded = base64.b64encode(media_file_bytes).decode('utf-8')
@@ -40,6 +42,8 @@ async def add_advertisement(
         date_to=date_to,
         media_file=media_file_coded,
         category_id=category_id,
+        owner_username=owner_username,
+        service=service,
     )
 
 
@@ -80,7 +84,6 @@ async def get_category(category_id: int) -> SCategory:
 async def add_pricing(pricing: SPricingCreate):
 
     return await PricingDAO.add(
-        name=pricing.name,
         days_from=pricing.days_from,
         days_to=pricing.days_to,
         daily_rate=pricing.daily_rate,

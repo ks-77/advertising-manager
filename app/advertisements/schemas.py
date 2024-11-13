@@ -1,6 +1,5 @@
 from datetime import date
 
-from fastapi import File, UploadFile
 from pydantic import BaseModel
 
 
@@ -10,7 +9,10 @@ class SAdvertisement(BaseModel):
     date_from: date
     date_to: date
     media_file: str
+    owner_username: str
+    service: str
     category_id: int
+
 
 
 class SCategory(BaseModel):
